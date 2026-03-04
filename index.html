@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Clone | Azizbek Dev</title>
+    <style>
+        /* Tesla font simulyatsiyasi */
+        
+        @import url('https://fonts.googleapis.com/css2?family=Universal+Sans:wght@300;400;500;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Universal Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            /* Scroll Snap: Har bir sectionga avtomatik "to'xtash" beradi */
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
+        }
+        /* Navigatsiya */
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo svg {
+            width: 120px;
+            fill: #fff;
+            /* Oq fon uchun rang o'zgaradi */
+            transition: 0.3s;
+        }
+        
+        .nav-center {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .nav-center a,
+        .nav-right a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav-center a:hover,
+        .nav-right a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        /* Umumiy Sectionlar */
+        
+        section {
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 0 60px;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        
+        .item-text {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .item-text h1 {
+            font-size: 44px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #171a20;
+        }
+        
+        .item-text p {
+            font-size: 14px;
+            color: #393c41;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 24px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .btn {
+            width: 256px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-dark {
+            background: rgba(23, 26, 32, 0.8);
+            color: #fff;
+        }
+        
+        .btn-light {
+            background: rgba(244, 244, 244, 0.65);
+            color: #393c41;
+        }
+        /* Rasmlar (Tesla rasmiy CDN-dan) */
+        
+        #model-y {
+            background-image: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-Y-Desktop-Global.png');
+        }
+        
+        #model-3 {
+            background-image: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-LHD.png');
+        }
+        
+        #model-x {
+            background-image: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-X-Desktop-LHD.png');
+        }
+        
+        #model-s {
+            background-image: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-LHD.png');
+        }
+        /* Animatsiyalar */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Mobile Responsive */
+        
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .btn {
+                width: 90vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg"><path d="M0 .1a9.7 9.7 0 0 0 7 7h11l.5.1v27.6h6.8V7.4l.5-.1h11a9.7 9.7 0 0 0 7-7zM43 0h-6.8v34.7H43c3 0 6.1 0 8.1-.1 1.2-.1 2.5-.2 3.4-.3 3-.6 5.3-1.8 7-3.5a13 13 0 0 0 3.3-8.8v-1.1a12.1 12.1 0 0 0-4.8-10.3 15 15 0 0 0-5.7-2.3c-1.6-.3-3.6-.5-6-.6H43zm0 6.7h4.3l3 .1c.5 0 1 .1 1.5.1a10.3 10.3 0 0 1 5.3 2c1.7 1.4 2.6 3.6 2.6 6.3V17c0 2.8-.9 5-2.6 6.3a10.3 10.3 0 0 1-5.3 2c-.5 0-1 .1-1.5.1l-3 .1H43zM107 5.1a5 5 0 0 0-4.7 3.1 5 5 0 0 0-.2 2.3v15a5 5 0 0 0 5 5 5 5 0 0 0 4.6-3 5 5 0 0 0 .4-2v-15a5 5 0 0 0-5.1-5.4zm0 20a1.6 1.6 0 0 1-1.6-1.6v-15a1.6 1.6 0 0 1 1.6-1.6 1.6 1.6 0 0 1 1.6 1.6v15a1.6 1.6 0 0 1-1.6 1.6zM153 0H146v34.7h21.4v-6.7h-14.4zm34 0h-7v34.7h7V0zm43 0h-7v34.7h7V0zm37 0h-7v34.7h7V0zm43 0h-7v34.7h7V0zm-17 0h-7v34.7h7V0z" fill="currentColor"></path></svg>
+        </div>
+        <ul class="nav-center">
+            <li><a href="#model-s">Model S</a></li>
+            <li><a href="#model-3">Model 3</a></li>
+            <li><a href="#model-x">Model X</a></li>
+            <li><a href="#model-y">Model Y</a></li>
+            <li><a href="#">Solar Roof</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#">Shop</a>
+            <a href="#">Account</a>
+            <a href="#">Menu</a>
+        </div>
+    </header>
+
+    <section id="model-y">
+        <div class="item-text">
+            <h1>Model Y</h1>
+            <p>Schedule a Virtual Drive</p>
+        </div>
+        <div class="buttons">
+            <a href="#" class="btn btn-dark">Custom Order</a>
+            <a href="#" class="btn btn-light">Demo Drive</a>
+        </div>
+    </section>
+
+    <section id="model-3">
+        <div class="item-text">
+            <h1>Model 3</h1>
+            <p>Experience the New Model 3</p>
+        </div>
+        <div class="buttons">
+            <a href="#" class="btn btn-dark">Custom Order</a>
+            <a href="#" class="btn btn-light">Demo Drive</a>
+        </div>
+    </section>
+
+    <section id="model-x">
+        <div class="item-text">
+            <h1>Model X</h1>
+            <p>View Inventory</p>
+        </div>
+        <div class="buttons">
+            <a href="#" class="btn btn-dark">Custom Order</a>
+            <a href="#" class="btn btn-light">Demo Drive</a>
+        </div>
+    </section>
+
+    <section id="model-s">
+        <div class="item-text">
+            <h1>Model S</h1>
+            <p>Learn More</p>
+        </div>
+        <div class="buttons">
+            <a href="#" class="btn btn-dark">Custom Order</a>
+            <a href="#" class="btn btn-light">Demo Drive</a>
+        </div>
+    </section>
+
+</body>
+
+</html>
